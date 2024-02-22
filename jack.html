@@ -1,4 +1,49 @@
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabbed Content</title>
+<style>
+/* Style the tab content */
+.tab-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+/* Style the active tab content */
+.tab-content.active {
+  display: block;
+}
+
+/* Style the tabs */
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Style the active tab */
+.tab.active {
+  background-color: #ccc;
+}
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tab" onclick="openTab(event, 'tab1')">Tab 1</div>
+  <div class="tab" onclick="openTab(event, 'tab2')">Tab 2</div>
+  <div class="tab" onclick="openTab(event, 'tab3')">Tab 3</div>
+</div>
+
+<div id="tab1" class="tab-content active">
+  <h2><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -252,5 +297,347 @@
     <li><strong>Entreprendre :</strong> Lancez votre propre entreprise en ligne en créant une boutique en ligne ou une plateforme de services.</li>
 </ul>
 <p>En résumé, HTML est bien plus qu'un simple langage de programmation. C'est la clé qui ouvre les portes de l'Internet et vous permet de réaliser vos ambitions personnelles et professionnelles en ligne.</p>
+</body>
+</html></h2>
+  <p>This is the content of tab 1.</p>
+</div>
+
+<div id="tab2" class="tab-content">
+  <h2><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Comments</title>
+<style>
+  /* Style the comment section */
+  #comments-section {
+    margin-top: 20px;
+  }
+
+  /* Style each comment */
+  .comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  /* Style the comment form */
+  #comment-form {
+    margin-top: 20px;
+  }
+
+  /* Style the comment input and button */
+  #comment-form input[type="text"], #comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  #comment-form button {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #comment-form button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div id="comments-section">
+  <!-- Comments will be displayed here -->
+</div>
+
+<div id="comment-form">
+  <h3>Leave a Comment</h3>
+  <input type="text" id="name" placeholder="Your Name">
+  <textarea id="comment" placeholder="Your Comment" rows="4"></textarea>
+  <button onclick="addComment()">Submit</button>
+</div>
+
+<script>
+  // Function to add a new comment
+  function addComment() {
+    var name = document.getElementById("name").value;
+    var comment = document.getElementById("comment").value;
+
+    if (name && comment) {
+      var commentSection = document.getElementById("comments-section");
+      var newComment = document.createElement("div");
+      newComment.className = "comment";
+      newComment.innerHTML = "<strong>" + name + ":</strong> " + comment;
+      commentSection.appendChild(newComment);
+
+      // Clear input fields after submitting comment
+      document.getElementById("name").value = "";
+      document.getElementById("comment").value = "";
+    } else {
+      alert("Please enter your name and comment.");
+    }
+  }
+</script>
+
+</body>
+</html></h2>
+  <p><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Comments</title>
+<style>
+  /* Style the comment section */
+  #comments-section {
+    margin-top: 20px;
+  }
+
+  /* Style each comment */
+  .comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  /* Style the comment form */
+  #comment-form {
+    margin-top: 20px;
+  }
+
+  /* Style the comment input and button */
+  #comment-form input[type="text"], #comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  #comment-form button {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #comment-form button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div id="comments-section">
+  <!-- Comments will be displayed here -->
+</div>
+
+<div id="comment-form">
+  <h3>Leave a Comment</h3>
+  <input type="text" id="name" placeholder="Your Name">
+  <textarea id="comment" placeholder="Your Comment" rows="4"></textarea>
+  <button onclick="addComment()">Submit</button>
+</div>
+
+<script>
+  // Function to add a new comment
+  function addComment() {
+    var name = document.getElementById("name").value;
+    var comment = document.getElementById("comment").value;
+
+    if (name && comment) {
+      var commentObject = {
+        name: name,
+        comment: comment
+      };
+
+      // Retrieve existing comments from local storage
+      var comments = JSON.parse(localStorage.getItem("comments")) || [];
+      comments.push(commentObject);
+
+      // Save comments to local storage
+      localStorage.setItem("comments", JSON.stringify(comments));
+
+      // Display comments
+      displayComments();
+
+      // Clear input fields after submitting comment
+      document.getElementById("name").value = "";
+      document.getElementById("comment").value = "";
+    } else {
+      alert("Please enter your name and comment.");
+    }
+  }
+
+  // Function to display comments
+  function displayComments() {
+    var commentsSection = document.getElementById("comments-section");
+    commentsSection.innerHTML = ""; // Clear previous comments
+
+    var comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+    comments.forEach(function(commentObject) {
+      var commentDiv = document.createElement("div");
+      commentDiv.className = "comment";
+      commentDiv.innerHTML = "<strong>" + commentObject.name + ":</strong> " + commentObject.comment;
+      commentsSection.appendChild(commentDiv);
+    });
+  }
+
+  // Display existing comments when the page loads
+  window.onload = displayComments;
+</script>
+
+</body>
+</html></p>
+</div>
+
+<div id="tab3" class="tab-content">
+  <h2>Tab 3 Content</h2>
+  <p>This is the content of tab 3.</p>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  // Hide all tab content
+  var tabContents = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < tabContents.length; i++) {
+    tabContents[i].style.display = "none";
+  }
+  
+  // Remove 'active' class from all tabs
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove("active");
+  }
+  
+  // Show the clicked tab content and mark it as active
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Comments</title>
+<style>
+  /* Style the comment section */
+  #comments-section {
+    margin-top: 20px;
+  }
+
+  /* Style each comment */
+  .comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  /* Style the comment form */
+  #comment-form {
+    margin-top: 20px;
+  }
+
+  /* Style the comment input and button */
+  #comment-form input[type="text"], #comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  #comment-form button {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #comment-form button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div id="comments-section">
+  <!-- Comments will be displayed here -->
+</div>
+
+<div id="comment-form">
+  <h3>Leave a Comment</h3>
+  <input type="text" id="name" placeholder="Your Name">
+  <textarea id="comment" placeholder="Your Comment" rows="4"></textarea>
+  <button onclick="addComment()">Submit</button>
+</div>
+
+<script>
+  // Function to add a new comment
+  function addComment() {
+    var name = document.getElementById("name").value;
+    var comment = document.getElementById("comment").value;
+
+    if (name && comment) {
+      var commentObject = {
+        name: name,
+        comment: comment
+      };
+
+      // Retrieve existing comments from local storage
+      var comments = JSON.parse(localStorage.getItem("comments")) || [];
+      comments.push(commentObject);
+
+      // Save comments to local storage
+      localStorage.setItem("comments", JSON.stringify(comments));
+
+      // Display comments
+      displayComments();
+
+      // Clear input fields after submitting comment
+      document.getElementById("name").value = "";
+      document.getElementById("comment").value = "";
+    } else {
+      alert("Please enter your name and comment.");
+    }
+  }
+
+  // Function to display comments
+  function displayComments() {
+    var commentsSection = document.getElementById("comments-section");
+    commentsSection.innerHTML = ""; // Clear previous comments
+
+    var comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+    comments.forEach(function(commentObject) {
+      var commentDiv = document.createElement("div");
+      commentDiv.className = "comment";
+      commentDiv.innerHTML = "<strong>" + commentObject.name + ":</strong> " + commentObject.comment;
+      commentsSection.appendChild(commentDiv);
+    });
+  }
+
+  // Display existing comments when the page loads
+  window.onload = displayComments;
+</script>
+
 </body>
 </html>
